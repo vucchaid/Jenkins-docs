@@ -8,6 +8,6 @@ services:
     volumes:
       - "$PWD/jenkins_home:/var/jenkins_home"
     networks:
-      - jenkins_network
+      - net
 networks:
-  jenkins_network:
+  net:
