@@ -7,7 +7,6 @@ cd jenkins
 # 3. Create a file called "docker-compose.yml" and paste contents present in this docker-compose.yml (https://github.com/vucchaid/Jenkins-docs/blob/main/installation/docker-compose.yml)
 # This file has a sample blueprint of jenkins server. It will direct docker to install, start jenkins as per blueprint.
 
-
 # 4. Create jenkins_home folder
 mkdir jenkins_home
 # This folder is written in blueprint present in step 3.
