@@ -1,0 +1,41 @@
+# 1. Create a directory "jenkins"
+mkdir $(pwd)/jenkins
+
+# 2. Get into jenkins directory
+cd jenkins
+
+# 3. Create a file called "docker-compose.yml" and paste contents present in this [file]()
+# This file has a sample blueprint of jenkins server. It will direct docker to install, start jenkins as per blueprint.
+
+
+# 4. Create jenkins_home folder
+mkdir jenkins_home
+# This folder is written in blueprint present in step 3.
+# This folder will hold the jenkins configurational data when the service is up.
+
+# 5. Provide permissions to user to manage jenkins_home folder
+sudo chown 1000:1000 jenkins_home -R
+
+# Breakdown of above command:
+# chown => change owner.
+# 1000:1000 => new_owner/uid:new_group/gid (you can type "id" to see which uid, gid exisiting user has).
+# jenkins_home => folder which we want to have new owner.
+# -R => recursively.
+
+# How to bring up service?
+docker-compose up -d
+# if you are setting up for first-time, 
+# you can do "docker logs -f jenkins" to get the master password. 
+
+# How to bring down service?
+docker-compose down
+# This will down the jenkins service. 
+# However if you up the service again, it'll retain previous configuration
+# because of previous configuration files present in "jenkins_home" folder.
+
+# How to restart service?
+docker-compose restart
+# Straight forward, will stop and start the service.
+
+
+
