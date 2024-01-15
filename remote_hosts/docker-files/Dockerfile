@@ -1,6 +1,6 @@
-FROM ubuntu:latest
+FROM centos:latest
 
-RUN apt-get update && apt-get install openssh-server
+RUN yum update && yum install -y openssh-server
 
 # Note: password 1234 should not be hardcoded here.
 RUN useradd remote_user && \
