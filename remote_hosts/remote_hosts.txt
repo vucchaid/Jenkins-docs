@@ -1,1 +1,19 @@
-Steps:
+Steps
+
+# 1. Create a folder called "remote" 
+mkdir remote-setup 
+
+# 2. Create a key pair.
+ssh-keygen -f remote-setup/remote-key
+
+# 3. Create "remote-setup/Dockerfile" and paste the content of sample Dockerfile (https://github.com/vucchaid/Jenkins-docs/blob/main/remote_hosts/docker-files/Dockerfile)
+
+# 4. Update docker-compose.yml with the content present in compose file (https://github.com/vucchaid/Jenkins-docs/blob/main/remote_hosts/docker-files/docker-componse.yml)
+
+# 5. Run build command so docker-compose reads the dockerfile
+docker-compose build
+
+#6. Up the services.
+docker-compose up -d
+
+
