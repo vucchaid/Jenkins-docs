@@ -11,10 +11,16 @@ RUN useradd remote_user && \
     mkdir /home/remote_user/.ssh && \
     chmod 700 /home/remote_user/.ssh
 
+RUN  ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key && \
+     ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key && \
+     ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key && \
+     ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ed25519_key
+
 COPY remote-key.pub /home/remote_user/.ssh/authorized_keys
 
 RUN chown remote_user:remote_user -R /home/remote_user/.ssh/ && \
-    chmod 600 /home/remote_user/.ssh/authorized_keys
+    chmod 600 /home/remote_user/.ssh/authorized_keys && \
+    rm /run/nologin
 
 RUN /usr/sbin/sshd-keygen
 
