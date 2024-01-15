@@ -1,6 +1,9 @@
 FROM centos:latest
 
-RUN yum update && yum install -y openssh-server
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+
+RUN yum update -y && yum install -y openssh-server openssh-clients && yum install -y passwd
 
 # Note: password 1234 should not be hardcoded here.
 RUN useradd remote_user && \
