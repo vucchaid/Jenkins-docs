@@ -22,6 +22,4 @@ RUN chown remote_user:remote_user -R /home/remote_user/.ssh/ && \
     chmod 600 /home/remote_user/.ssh/authorized_keys && \
     rm /run/nologin
 
-RUN /usr/sbin/sshd-keygen
-
 CMD /usr/sbin/sshd -D
